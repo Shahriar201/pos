@@ -53,5 +53,16 @@ Route::group(['middleware'=>'auth'], function(){
         
     });
     
+    Route::prefix('customers')->group(function(){
+    
+        Route::get('/view', 'Backend\CustomerController@view')->name('customers.view');
+        Route::get('/add', 'Backend\CustomerController@add')->name('customers.add');
+        Route::post('/store', 'Backend\CustomerController@store')->name('customers.store'); 
+        Route::get('/edit/{id}', 'Backend\CustomerController@edit')->name('customers.edit');
+        Route::post('/update/{id}', 'Backend\CustomerController@update')->name('customers.update');
+        Route::post('/delete', 'Backend\CustomerController@delete')->name('customers.delete');
+        
+    });
+    
 
 });

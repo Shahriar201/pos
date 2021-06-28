@@ -68,7 +68,26 @@
                 <li class="nav-item">
                     <a href="{{ route('suppliers.view') }}" class="nav-link {{ ($route=='suppliers.view')?'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Your Suppliers</p>
+                        <p>View Suppliers</p>
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
+        
+        <li class="nav-item has-treeview {{ ($prefix=='/customers')?'menu-open':'' }}">
+            <a href="" class="nav-link">
+                <i class="nav-icon fa fa-copy"></i>
+                <p>
+                    Manage Customers
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('customers.view') }}" class="nav-link {{ ($route=='customers.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>View Customers</p>
                     </a>
                 </li>
                 
