@@ -42,39 +42,14 @@ Route::group(['middleware'=>'auth'], function(){
         
     });
     
-    Route::prefix('logos')->group(function(){
+    Route::prefix('suppliers')->group(function(){
     
-        Route::get('/view', 'Backend\LogoController@view')->name('logos.view');
-        Route::get('/add', 'Backend\LogoController@add')->name('logos.add');
-        Route::post('/store', 'Backend\LogoController@store')->name('logos.store');  
-        Route::get('/edit/{id}', 'Backend\LogoController@edit')->name('logos.edit');
-        Route::post('/update/{id}', 'Backend\LogoController@update')->name('logos.update');
-        Route::get('/delete/{id}', 'Backend\LogoController@delete')->name('logos.delete');
-        
-    });
-    
-    Route::prefix('contacts')->group(function(){
-    
-        Route::get('/view', 'Backend\ContactController@view')->name('contacts.view');
-        Route::get('/add', 'Backend\ContactController@add')->name('contacts.add');
-        Route::post('/store', 'Backend\ContactController@store')->name('contacts.store'); 
-        Route::get('/edit/{id}', 'Backend\ContactController@edit')->name('contacts.edit');
-        Route::post('/update/{id}', 'Backend\ContactController@update')->name('contacts.update');
-        Route::get('/delete/{id}', 'Backend\ContactController@delete')->name('contacts.delete');
-
-        Route::get('/communicate', 'Backend\ContactController@viewCommunicate')->name('contacts.communicate');
-        Route::get('/communicate/delete/{id}', 'Backend\ContactController@deleteCommunicate')->name('contacts.communicate.delete');
-        
-    });
-    
-    Route::prefix('abouts')->group(function(){
-    
-        Route::get('/view', 'Backend\AboutController@view')->name('abouts.view');
-        Route::get('/add', 'Backend\AboutController@add')->name('abouts.add');
-        Route::post('/store', 'Backend\AboutController@store')->name('abouts.store'); 
-        Route::get('/edit/{id}', 'Backend\AboutController@edit')->name('abouts.edit');
-        Route::post('/update/{id}', 'Backend\AboutController@update')->name('abouts.update');
-        Route::get('/delete/{id}', 'Backend\AboutController@delete')->name('abouts.delete');
+        Route::get('/view', 'Backend\SupplierController@view')->name('suppliers.view');
+        Route::get('/add', 'Backend\SupplierController@add')->name('suppliers.add');
+        Route::post('/store', 'Backend\SupplierController@store')->name('suppliers.store'); 
+        Route::get('/edit/{id}', 'Backend\SupplierController@edit')->name('suppliers.edit');
+        Route::post('/update/{id}', 'Backend\SupplierController@update')->name('suppliers.update');
+        Route::post('/delete', 'Backend\SupplierController@delete')->name('suppliers.delete');
         
     });
     

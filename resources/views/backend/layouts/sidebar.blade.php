@@ -55,64 +55,20 @@
                 
             </ul>
         </li>
-
-        <li class="nav-item has-treeview {{ ($prefix=='/logos')?'menu-open':'' }}">
+        
+        <li class="nav-item has-treeview {{ ($prefix=='/suppliers')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fa fa-image"></i>
+                <i class="nav-icon fa fa-copy"></i>
                 <p>
-                    Manage Logo
+                    Manage Suppliers
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('logos.view') }}" class="nav-link {{ ($route=='logos.view')?'active':'' }}">
+                    <a href="{{ route('suppliers.view') }}" class="nav-link {{ ($route=='suppliers.view')?'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>View Logo</p>
-                    </a>
-                </li>
-                
-            </ul>
-        </li>
-
-        <li class="nav-item has-treeview {{ ($prefix=='/contacts')?'menu-open':'' }}">
-            <a href="" class="nav-link">
-                <i class="nav-icon fa fa-phone-square"></i>
-                <p>
-                    Manage Contact
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('contacts.view') }}" class="nav-link {{ ($route=='contacts.view')?'active':'' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>View Contact</p>
-                    </a>
-                </li>     
-
-                <li class="nav-item">
-                    <a href="{{ route('contacts.communicate') }}" class="nav-link {{ ($route=='contacts.communicate')?'active':'' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>View Communicate</p>
-                    </a>
-                </li>     
-            </ul>
-        </li>
-
-        <li class="nav-item has-treeview {{ ($prefix=='/abouts')?'menu-open':'' }}">
-            <a href="" class="nav-link">
-                <i class="nav-icon fa fa-info-circle"></i>
-                <p>
-                    Manage About
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('abouts.view') }}" class="nav-link {{ ($route=='abouts.view')?'active':'' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>View About</p>
+                        <p>Your Suppliers</p>
                     </a>
                 </li>
                 
