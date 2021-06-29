@@ -64,5 +64,16 @@ Route::group(['middleware'=>'auth'], function(){
         
     });
     
+    Route::prefix('units')->group(function(){
+    
+        Route::get('/view', 'Backend\UnitController@view')->name('units.view');
+        Route::get('/add', 'Backend\UnitController@add')->name('units.add');
+        Route::post('/store', 'Backend\UnitController@store')->name('units.store'); 
+        Route::get('/edit/{id}', 'Backend\UnitController@edit')->name('units.edit');
+        Route::post('/update/{id}', 'Backend\UnitController@update')->name('units.update');
+        Route::post('/delete', 'Backend\UnitController@delete')->name('units.delete');
+        
+    });
+    
 
 });
