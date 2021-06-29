@@ -58,7 +58,7 @@
         
         <li class="nav-item has-treeview {{ ($prefix=='/suppliers')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fa fa-copy"></i>
+                <i class="nav-icon fa fa-shopping-cart"></i>
                 <p>
                     Manage Suppliers
                     <i class="fas fa-angle-left right"></i>
@@ -77,7 +77,7 @@
         
         <li class="nav-item has-treeview {{ ($prefix=='/customers')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fa fa-copy"></i>
+                <i class="nav-icon fa fa-male"></i>
                 <p>
                     Manage Customers
                     <i class="fas fa-angle-left right"></i>
@@ -96,7 +96,7 @@
         
         <li class="nav-item has-treeview {{ ($prefix=='/units')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fa fa-copy"></i>
+                <i class="nav-icon fa fa-universal-access"></i>
                 <p>
                     Manage Units
                     <i class="fas fa-angle-left right"></i>
@@ -107,6 +107,25 @@
                     <a href="{{ route('units.view') }}" class="nav-link {{ ($route=='units.view')?'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>View Units</p>
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
+        
+        <li class="nav-item has-treeview {{ ($prefix=='/categories')?'menu-open':'' }}">
+            <a href="" class="nav-link">
+                <i class="nav-icon fa fa-tasks"></i>
+                <p>
+                    Manage Category
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('categories.view') }}" class="nav-link {{ ($route=='categories.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>View Category</p>
                     </a>
                 </li>
                 

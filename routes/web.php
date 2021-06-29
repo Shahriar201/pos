@@ -75,5 +75,15 @@ Route::group(['middleware'=>'auth'], function(){
         
     });
     
+    Route::prefix('categories')->group(function(){
+    
+        Route::get('/view', 'Backend\CategoryController@view')->name('categories.view');
+        Route::get('/add', 'Backend\CategoryController@add')->name('categories.add');
+        Route::post('/store', 'Backend\CategoryController@store')->name('categories.store'); 
+        Route::get('/edit/{id}', 'Backend\CategoryController@edit')->name('categories.edit');
+        Route::post('/update/{id}', 'Backend\CategoryController@update')->name('categories.update');
+        Route::post('/delete', 'Backend\CategoryController@delete')->name('categories.delete');     
+    });
+    
 
 });
