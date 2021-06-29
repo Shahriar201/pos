@@ -130,6 +130,26 @@
                 </li>
                 
             </ul>
+       
+        </li>
+        
+        <li class="nav-item has-treeview {{ ($prefix=='/products')?'menu-open':'' }}">
+            <a href="" class="nav-link">
+                <i class="nav-icon fa fa-tasks"></i>
+                <p>
+                    Manage Products
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('products.view') }}" class="nav-link {{ ($route=='products.view')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>View Products</p>
+                    </a>
+                </li>
+                
+            </ul>
         </li>
 
     </ul>
