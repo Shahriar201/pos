@@ -94,4 +94,29 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/update/{id}', 'Backend\ProductController@update')->name('products.update');
         Route::post('/delete', 'Backend\ProductController@delete')->name('products.delete');     
     });
+    
+    Route::prefix('purchases')->group(function(){
+    
+        Route::get('/view', 'Backend\PurchaseController@view')->name('purchases.view');
+        Route::get('/add', 'Backend\PurchaseController@add')->name('purchases.add');
+        Route::post('/store', 'Backend\PurchaseController@store')->name('purchases.store'); 
+        Route::get('/edit/{id}', 'Backend\PurchaseController@edit')->name('purchases.edit');
+        Route::post('/update/{id}', 'Backend\PurchaseController@update')->name('purchases.update');
+        Route::post('/delete', 'Backend\PurchaseController@delete')->name('purchases.delete');     
+    });
+
+    // Get Category By Ajax
+    Route::get('/get-category', 'Backend\DefaultController@getCategory')->name('get-category');
+    Route::get('/get-product', 'Backend\DefaultController@getProduct')->name('get-product');
+    
+    Route::prefix('invoices')->group(function(){
+    
+        Route::get('/view', 'Backend\InvoiceController@view')->name('invoices.view');
+        Route::get('/add', 'Backend\InvoiceController@add')->name('invoices.add');
+        Route::post('/store', 'Backend\InvoiceController@store')->name('invoices.store'); 
+        Route::get('/edit/{id}', 'Backend\InvoiceController@edit')->name('invoices.edit');
+        Route::post('/update/{id}', 'Backend\InvoiceController@update')->name('invoices.update');
+        Route::post('/delete', 'Backend\InvoiceController@delete')->name('invoices.delete');     
+    });
+
 });

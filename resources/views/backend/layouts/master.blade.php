@@ -239,6 +239,9 @@
     <script src="{{ asset('public/backend/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('public/backend/dist/js/pages/dashboard.js') }}"></script>
+    <!--Handlebars js-->
+    <script src="{{ asset('public/backend/dist/js/handlebars-v4.0.12.js') }}"></script>
+    <script src="{{ asset('public/backend/dist/js/handlebars-v4.7.7.js') }}"></script>
 
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('public/backend') }}/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -255,6 +258,9 @@
     <script src="{{ asset('backend') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script> --}}
 
     <!-- Page specific script -->
+
+    {{-- Handlebar js cdn --}}
+    {{-- <script type="text/javascript" src="ajax/libs/handlebars.js/4.7.1/handlebars.amd.min.js"></script> --}}
 
     <!-- jquery-validation -->
     <script src="{{ asset('public/backend') }}/plugins/jquery-validation/jquery.validate.min.js"></script>
