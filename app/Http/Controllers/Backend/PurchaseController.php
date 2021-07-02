@@ -10,6 +10,7 @@ use App\Model\Unit;
 use App\Model\Category;
 use Auth;
 use App\Model\Purchase;
+use DB;
 
 class PurchaseController extends Controller
 {
@@ -51,33 +52,26 @@ class PurchaseController extends Controller
         return redirect()->route('purchases.view')->with('success', 'Data inserted successfully');
     }
 
-    public function edit($id){
-        $data['editData'] = Product::find($id);
-        $data['suppliers'] = Supplier::all();
-        $data['units'] = Unit::all();
-        $data['categories'] = Category::all();
-
-        return view('backend.product.add-product', $data);
-    }
-
-    public function update(Request $request, $id){
-        $product = Product::find($id);
-        $product->supplier_id = $request->supplier_id;
-        $product->unit_id = $request->unit_id;
-        $product->category_id = $request->category_id;
-        $product->name = $request->name;
-        // $product->quantity = $request->quantity;
-        $product->updated_by = Auth::user()->id;
-        $product->save();
-
-        return redirect()->route('products.view')->with('success', 'Data updated successfully');
-
-    }
-
     public function delete(Request $request){
-        $product = Product::find($request->id);
-        $product->delete();
+        $purchase = Purchase::find($request->id);
+        $purchase->delete();
 
-        return redirect()->route('products.view')->with('success', 'Data deleted successfully');
+        return redirect()->route('purchases.view')->with('success', 'Data deleted successfully');
+    }
+
+    public function pendingList(){
+        $allData = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
+        return view('backend.purchase.view-pending-list', compact('allData'));
+    }
+
+    public function approve($id){
+        $purchase = Purchase::find($id);
+        $product = Product::where('id',$purchase->product_id)->first();
+        $purchase_qty = ((float)($purchase->buying_qty))+((float)($product->quantity));
+        $product->quantity = $purchase_qty;
+        if ($product->save()) {
+            DB::table('purchases')->where('id',$id)->update(['status' => 1]);
+        }
+        return redirect()->route('purchases.pending.list')->with('success', 'Order Approved Successfully');
     }
 }

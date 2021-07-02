@@ -61,14 +61,22 @@
                                     <tr class="{{ $category->id }}">
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $category->name }}</td>
+
+                                        @php
+                                            $count_category = App\Model\Product::where('category_id', $category->id)->count();
+                                        @endphp
+
                                         <td>
                                             <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('categories.edit', $category->id)}}">
                                                 <i class="fa fa-edit"></i>
                                             </a>
 
-                                            <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('categories.delete') }}" data-token="{{ csrf_token() }}" data-id="{{ $category->id }}">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
+                                            @if ($count_category<1)
+                                                <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('categories.delete') }}" data-token="{{ csrf_token() }}" data-id="{{ $category->id }}">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            @endif
+                                            
                                         </td>
                                     </tr>
                                         

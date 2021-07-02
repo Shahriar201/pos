@@ -37,10 +37,9 @@
                     <!-- Custom tabs (Charts with tabs)-->
                     <div class="card">
                         <div class="card-header">
-                            <h3>Purchase List
-                                <a class="btn btn-success float-right btn-sm" href="{{ route('purchases.add') }}">
-                                    <i class="fa fa-plus-circle"></i>Add Purchase</a>
-                                
+                            <h3>Pending Purchase List
+                                {{-- <a class="btn btn-success float-right btn-sm" href="{{ route('purchases.add') }}">
+                                    <i class="fa fa-plus-circle"></i>Add Purchase</a> --}}                              
                             </h3>
                         </div>
                         <!-- /.card-header -->
@@ -95,8 +94,8 @@
                                             </a> --}}
 
                                             @if ($purchase->status == '0')
-                                                <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('purchases.delete') }}" data-token="{{ csrf_token() }}" data-id="{{ $purchase->id }}">
-                                                    <i class="fa fa-trash"></i>
+                                                <a title="Approve" id="approveBtn" class="btn btn-sm btn-success" href="{{ route('purchases.approve', $purchase->id) }}">
+                                                    <i class="fa fa-check-circle"></i>
                                                 </a>
                                             @endif
                                             

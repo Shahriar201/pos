@@ -164,7 +164,16 @@
                 <li class="nav-item">
                     <a href="{{ route('purchases.view') }}" class="nav-link {{ ($route=='purchases.view')?'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>View Products</p>
+                        <p>View Purchase</p>
+                    </a>
+                </li>
+                
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('purchases.pending.list') }}" class="nav-link {{ ($route=='purchases.pending.list')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Approval Purchase</p>
                     </a>
                 </li>
                 

@@ -100,9 +100,9 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/view', 'Backend\PurchaseController@view')->name('purchases.view');
         Route::get('/add', 'Backend\PurchaseController@add')->name('purchases.add');
         Route::post('/store', 'Backend\PurchaseController@store')->name('purchases.store'); 
-        Route::get('/edit/{id}', 'Backend\PurchaseController@edit')->name('purchases.edit');
-        Route::post('/update/{id}', 'Backend\PurchaseController@update')->name('purchases.update');
-        Route::post('/delete', 'Backend\PurchaseController@delete')->name('purchases.delete');     
+        Route::post('/delete', 'Backend\PurchaseController@delete')->name('purchases.delete');    
+        Route::get('/purchase/pending/list', 'Backend\PurchaseController@pendingList')->name('purchases.pending.list');    
+        Route::get('/purchases/approve/{id}', 'Backend\PurchaseController@approve')->name('purchases.approve');    
     });
 
     // Get Category By Ajax

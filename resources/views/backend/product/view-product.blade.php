@@ -70,14 +70,21 @@
                                         <td>{{ $product->name }}</td>
                                         {{-- <td>{{ $product->quantity }}</td> --}}
 
+                                        @php
+                                            $count_product = App\Model\Purchase::where('product_id', $product->id)->count();
+                                        @endphp
+
                                         <td>
                                             <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('products.edit', $product->id)}}">
                                                 <i class="fa fa-edit"></i>
                                             </a>
 
-                                            <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('products.delete') }}" data-token="{{ csrf_token() }}" data-id="{{ $product->id }}">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
+                                            @if ($count_product<1)
+                                                <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('products.delete') }}" data-token="{{ csrf_token() }}" data-id="{{ $product->id }}">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            @endif
+                                            
                                         </td>
                                     </tr>
                                         

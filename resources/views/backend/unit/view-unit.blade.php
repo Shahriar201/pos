@@ -61,14 +61,22 @@
                                     <tr class="{{ $unit->id }}">
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $unit->name }}</td>
+
+                                        @php
+                                            $count_unit = App\Model\Product::where('unit_id', $unit->id)->count();
+                                        @endphp
+
                                         <td>
                                             <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('units.edit', $unit->id)}}">
                                                 <i class="fa fa-edit"></i>
                                             </a>
 
-                                            <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('units.delete') }}" data-token="{{ csrf_token() }}" data-id="{{ $unit->id }}">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
+                                            @if ($count_unit<1)
+                                                <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('units.delete') }}" data-token="{{ csrf_token() }}" data-id="{{ $unit->id }}">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            @endif
+                                            
                                         </td>
                                     </tr>
                                         

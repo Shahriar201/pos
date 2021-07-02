@@ -357,6 +357,35 @@
 
     </script>
 
+    {{-- Approved Sweet Alert --}}
+    <script type="text/javascript">
+        $(function(){
+            $(document).on('click', '#approveBtn', function(e){
+                e.preventDefault();
+                var link = $(this).attr("href");
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "approve this order",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, approved it!'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = link;
+                        Swal.fire(
+                        'Approved!',
+                        'Your file has been approved.',
+                        'success'
+                        )
+                    }
+                    })
+            });
+        });
+
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#image').change(function(e) {
