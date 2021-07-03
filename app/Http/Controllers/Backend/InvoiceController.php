@@ -15,6 +15,7 @@ use App\Model\Invoice;
 use App\Model\InvoiceDetail;
 use App\Model\Payment;
 use App\Model\PaymentDetail;
+use App\Model\Customer;
 
 class InvoiceController extends Controller
 {
@@ -31,8 +32,9 @@ class InvoiceController extends Controller
             $data['invoice_no'] = $firstReg+1;
         }else {
             $invoice_data = Invoice::orderBy('id', 'desc')->first()->invoice_no;
-            $invoice_no = $invoice_data+1;
+            $data['invoice_no'] = $invoice_data+1;
         }
+        $data['customers'] = Customer::all();
 
         return view('backend.invoice.add-invoice', $data);
     }
