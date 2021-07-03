@@ -60,16 +60,16 @@
 
                                     <div class="form-group col-md-4">
                                         <label>Date</label></label>
-                                        <input type="text" name="date" id="date" class="form-control datepicker"
+                                        <input type="text" name="date" id="date" class="form-control datepicker form-control-sm"
                                             placeholder="YYYY-MM-DD" readonly>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Purchase No</label></label>
-                                        <input type="text" name="purchase_no" id="purchase_no" class="form-control">
+                                        <input type="text" name="purchase_no" id="purchase_no" class="form-control form-control-sm">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Supplier Name</label></label>
-                                        <select name="supplier_id" id="supplier_id" class="form-control">
+                                        <select name="supplier_id" id="supplier_id" class="form-control select2">
                                             <option value="">Select Supplier</option>
                                             @foreach ($suppliers as $supplier)
                                                 <option value="{{ $supplier->id }}"
@@ -80,14 +80,14 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Category</label></label>
-                                        <select name="category_id" id="category_id" class="form-control">
+                                        <select name="category_id" id="category_id" class="form-control select2">
                                             <option value="">Select Category</option>
 
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Product Name</label></label>
-                                        <select name="product_id" id="product_id" class="form-control">
+                                        <select name="product_id" id="product_id" class="form-control select2">
                                             <option value="">Select Product</option>
 
                                         </select>

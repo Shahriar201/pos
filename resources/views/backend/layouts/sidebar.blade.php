@@ -180,7 +180,7 @@
             </ul>
         </li>
         
-        <li class="nav-item has-treeview {{ ($prefix=='/invoices')?'menu-open':'' }}">
+        <li class="nav-item has-treeview {{ ($prefix=='/invoice')?'menu-open':'' }}">
             <a href="" class="nav-link">
                 <i class="nav-icon fa fa-tasks"></i>
                 <p>
@@ -190,9 +190,18 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('invoices.view') }}" class="nav-link {{ ($route=='invoices.view')?'active':'' }}">
+                    <a href="{{ route('invoice.view') }}" class="nav-link {{ ($route=='invoice.view')?'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>View Invoice</p>
+                    </a>
+                </li>
+                
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('invoice.pending.list') }}" class="nav-link {{ ($route=='invoice.pending.list')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Approval Invoice</p>
                     </a>
                 </li>
                 

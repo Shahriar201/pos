@@ -60,7 +60,7 @@
                                
                                 <div class="form-group col-md-4">
                                     <label for="">Supplier Name</label>
-                                    <select name="supplier_id" id="supplier_id" class="form-control">
+                                    <select name="supplier_id" id="supplier_id" class="form-control select2">
                                         <option value="">Select Supplier</option>
                                         @foreach ($suppliers as $supplier)
                                             <option value="{{ $supplier->id }}" {{ (@$editData->supplier_id == $supplier->id)? "selected" : "" }}>{{ $supplier->name }}</option>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Unit</label></label>
-                                    <select name="unit_id" class="form-control">
+                                    <select name="unit_id" class="form-control select2">
                                         <option value="">Select Unit</option>
                                         @foreach ($units as $unit)
                                             <option value="{{ $unit->id }}" {{ (@$editData->unit_id == $unit->id) ? 'selected' : '' }}>{{ $unit->name }}</option>
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Category</label></label>
-                                    <select name="category_id" class="form-control">
+                                    <select name="category_id" class="form-control select2">
                                         <option value="">Select Category</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}" {{ (@$editData->category_id == $category->id) ? 'selected' : '' }}>{{ $category->name }}</option>

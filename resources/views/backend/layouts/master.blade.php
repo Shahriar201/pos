@@ -38,6 +38,10 @@
         href="{{ asset('public/backend') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('public/backend') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
+    {{-- Select2 --}}
+    <link rel="stylesheet" href="{{ asset('public/backend') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('public/backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
     <!-- jQuery -->
     <script src="{{ asset('public/backend/plugins/jquery/jquery.min.js') }}"></script>
 
@@ -266,6 +270,10 @@
     <script src="{{ asset('public/backend') }}/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script src="{{ asset('public/backend') }}/plugins/jquery-validation/additional-methods.min.js"></script>
 
+    {{-- Select2 --}}
+    <script src="{{ asset('public/backend') }}/plugins/select2/js/select2.full.min.js"></script>
+
+    {{-- Data Table JS --}}
     <script>
         $(function() {
             $("#example1").DataTable();
@@ -386,6 +394,7 @@
 
     </script>
 
+    {{-- Real time image with JS --}}
     <script type="text/javascript">
         $(document).ready(function() {
             $('#image').change(function(e) {
@@ -398,6 +407,13 @@
 
             });
         });
+    </script>
+
+    {{-- Select2 JS--}}
+    <script type="text/javascript">
+        $(function () {
+            $('.select2').select2();
+        })
     </script>
 
 </body>

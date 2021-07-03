@@ -38,7 +38,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Invoice List
-                                <a class="btn btn-success float-right btn-sm" href="{{ route('invoices.add') }}">
+                                <a class="btn btn-success float-right btn-sm" href="{{ route('invoice.add') }}">
                                     <i class="fa fa-plus-circle"></i>Add Invoice</a>
                                 
                             </h3>
@@ -50,41 +50,39 @@
                                 <thead>
                                     <tr>
                                         <th>SL.</th>
-                                        <th>Product Name</th>
-                                        <th>PCS</th>
-                                        <th>Unit Price</th>
-                                        <th>Total Price</th>
-                                        {{-- <th>Quantity</th> --}}
-                                        <th>Action</th>
+                                        <th>Customer Name</th>
+                                        <th>Invoice No</th>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th style="width: 12%">Action</th>
                                     </tr>
                                 </thead>
-                                @php
-                                $total = 0;
-                                @endphp
 
                                 <tbody>
-                                    @foreach ($allData as $key => $invoice)
+                                    {{-- @foreach ($allData as $key => $invoice) --}}
 
-                                    <tr class="{{ $invoice->id }}">
-                                        <td>{{ $key+1 }}</td>
-                                        <td>{{ $invoice->name }}</td>
-                                        <td>{{ $invoice->pcs }}</td>
-                                        <td>{{ $invoice->unit_price }}</td>
-                                        <td id="total_price">{{ $invoice->total_price}}</td>
-                                        {{-- <td>{{ $invoice->quantity }}</td> --}}
+                                    <tr class="">
+                                        <td>1</td>
+                                        <td>ABC</td>
+                                        <td>A-20</td>
+                                        <td>10-10-2021</td>
+                                        <td>Dummy</td>
                                         
                                         <td>
-                                            <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('invoices.edit', $invoice->id)}}">
+                                            {{-- <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('purchases.edit', $purchase->id)}}">
                                                 <i class="fa fa-edit"></i>
-                                            </a>
+                                            </a> --}}
 
-                                            <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('invoices.delete') }}" data-token="{{ csrf_token() }}" data-id="{{ $invoice->id }}">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
+                                            {{-- @if ($purchase->status == '0') --}}
+                                                <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('purchases.delete') }}" data-token="{{ csrf_token() }}" data-id="">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            {{-- @endif --}}
+                                            
                                         </td>
                                     </tr>
                                         
-                                    @endforeach
+                                    {{-- @endforeach --}}
                                     
                                 </tbody>
                             </table>
@@ -105,38 +103,4 @@
 </div>
 <!-- /.content-wrapper -->
 
-{{-- <script>
-    $(document).ready(function(){
-    // Get value on keyup funtion
-    $("#price, #qty").keyup(function(){
-
-    var total=0;    	
-    var x = Number($("#price").val());
-    var y = Number($("#qty").val());
-    var total=x * y;  
-
-    $('#total').val(total);
-
-});
-});
-</script> --}}
-<script type="text/javascript">
-    $(function() {
-        $(document).on('change', '#total_price', function() {
-            var pcs = $(this).val();
-            var unit_price = $(this).val();
-            $.ajax({
-                url: "{{ route('view') }}",
-                type: "GET",
-                data: {
-                    pcs: pcs,
-                    unit_price:unit_price
-                },
-                success: function(data) {
-                    
-                }
-            });
-        });
-    });
-</script>
 @endsection

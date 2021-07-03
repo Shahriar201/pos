@@ -108,15 +108,17 @@ Route::group(['middleware'=>'auth'], function(){
     // Get Category By Ajax
     Route::get('/get-category', 'Backend\DefaultController@getCategory')->name('get-category');
     Route::get('/get-product', 'Backend\DefaultController@getProduct')->name('get-product');
-    
-    Route::prefix('invoices')->group(function(){
-    
-        Route::get('/view', 'Backend\InvoiceController@view')->name('invoices.view');
-        Route::get('/add', 'Backend\InvoiceController@add')->name('invoices.add');
-        Route::post('/store', 'Backend\InvoiceController@store')->name('invoices.store'); 
-        Route::get('/edit/{id}', 'Backend\InvoiceController@edit')->name('invoices.edit');
-        Route::post('/update/{id}', 'Backend\InvoiceController@update')->name('invoices.update');
-        Route::post('/delete', 'Backend\InvoiceController@delete')->name('invoices.delete');     
-    });
 
+    Route::get('/get/stock', 'Backend\DefaultController@getStock')->name('check-product-stock');
+
+    Route::prefix('invoice')->group(function(){
+    
+        Route::get('/view', 'Backend\InvoiceController@view')->name('invoice.view');
+        Route::get('/add', 'Backend\InvoiceController@add')->name('invoice.add');
+        Route::post('/store', 'Backend\InvoiceController@store')->name('invoice.store'); 
+        Route::post('/delete', 'Backend\InvoiceController@delete')->name('invoice.delete');    
+        Route::get('/purchase/pending/list', 'Backend\InvoiceController@pendingList')->name('invoice.pending.list');    
+        Route::get('/invoice/approve/{id}', 'Backend\InvoiceController@approve')->name('invoice.approve');    
+    });
+ 
 });
