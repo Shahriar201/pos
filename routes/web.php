@@ -118,7 +118,8 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/store', 'Backend\InvoiceController@store')->name('invoice.store'); 
         Route::post('/delete', 'Backend\InvoiceController@delete')->name('invoice.delete');    
         Route::get('/purchase/pending/list', 'Backend\InvoiceController@pendingList')->name('invoice.pending.list');    
-        Route::get('/invoice/approve/{id}', 'Backend\InvoiceController@approve')->name('invoice.approve');    
+        Route::get('/invoice/approve/{id}', 'Backend\InvoiceController@approve')->name('invoice.approve');  
+        Route::post('/delete', 'Backend\InvoiceController@delete')->name('invoice.delete');   
     });
  
 });

@@ -20,7 +20,7 @@ use App\Model\Customer;
 class InvoiceController extends Controller
 {
     public function view(){
-        $allData = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
+        $allData = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '1')->get();
         return view('backend.invoice.view-invoice', compact('allData'));
     }
 
@@ -112,19 +112,22 @@ class InvoiceController extends Controller
                 });
             }
         }
-        return redirect()->route('invoice.view')->with('success', 'Data inserted successfully');
+        return redirect()->route('invoice.pending.list')->with('success', 'Data inserted successfully');
     }
 
     public function delete(Request $request){
-        $purchase = Purchase::find($request->id);
-        $purchase->delete();
+        $invoice = Invoice::find($request->id);
+        $invoice->delete();
+        InvoiceDetail::where('invoice_id', $invoice->id)->delete();
+        Payment::where('invoice_id', $invoice->id)->delete();
+        PaymentDetail::where('invoice_id', $invoice->id)->delete();
 
-        return redirect()->route('purchases.view')->with('success', 'Data deleted successfully');
+        return redirect()->route('invoice.pending.list')->with('success', 'Data deleted successfully');
     }
 
     public function pendingList(){
-        $allData = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
-        return view('backend.purchase.view-pending-list', compact('allData'));
+        $allData = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
+        return view('backend.invoice.pending-invoice-list', compact('allData'));
     }
 
     public function approve($id){

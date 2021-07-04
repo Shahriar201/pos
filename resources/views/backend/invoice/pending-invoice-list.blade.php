@@ -9,13 +9,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Invoice</h1>
+                    <h1 class="m-0">Pending Invoice List</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Invoice</li>
+                        <li class="breadcrumb-item active">Pending Invoice</li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -37,9 +37,9 @@
                     <!-- Custom tabs (Charts with tabs)-->
                     <div class="card">
                         <div class="card-header">
-                            <h3>Invoice List
-                                <a class="btn btn-success float-right btn-sm" href="{{ route('invoice.add') }}">
-                                    <i class="fa fa-plus-circle"></i>Add Invoice</a>
+                            <h3>Pending Invoice List
+                                {{-- <a class="btn btn-success float-right btn-sm" href="">
+                                    <i class="fa fa-plus-circle"></i>Add Invoice</a> --}}
                                 
                             </h3>
                         </div>
@@ -55,7 +55,8 @@
                                         <th>Date</th>
                                         <th>Description</th>
                                         <th>Total Amount</th>
-                                        {{-- <th>Action</th> --}}
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
@@ -73,17 +74,27 @@
                                             <td>{{ date('d-m-Y', strtotime($invoice->date)) }}</td>
                                             <td>{{ $invoice->description }}</td>
                                             <td>{{ $invoice['payment']['total_amount'] }} TK</td>
+                                            <td>
+                                                @if ($invoice->status == '0')
+                                                    <span style="background: #FC4236; padding: 5px;">Pending</span>
+                                                @elseif ($invoice->status == '1')
+                                                    <span style="background: #5EAB00; padding: 5px;">Approaved</span>   
+                                                @endif
+                                            </td>
                                             
                                             <td>
                                                 {{-- <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('purchases.edit', $purchase->id)}}">
                                                     <i class="fa fa-edit"></i>
                                                 </a> --}}
 
-                                                {{-- @if ($purchase->status == '0') --}}
-                                                    {{-- <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('purchases.delete') }}" data-token="{{ csrf_token() }}" data-id="">
+                                                @if ($invoice->status == '0')
+                                                    <a title="Approve" class="btn btn-sm btn-success" href="{{ route('invoice.approve', $invoice->id) }}">
+                                                        <i class="fa fa-check-circle"></i>
+                                                    </a>
+                                                    <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('invoice.delete') }}" data-token="{{ csrf_token() }}" data-id="{{ $invoice->id }}">
                                                         <i class="fa fa-trash"></i>
-                                                    </a> --}}
-                                                {{-- @endif --}}
+                                                    </a>
+                                                @endif
                                                 
                                             </td>
                                         </tr>
