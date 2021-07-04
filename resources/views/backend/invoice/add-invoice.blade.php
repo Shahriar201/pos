@@ -66,7 +66,7 @@
                                     <div class="form-group col-md-2">
                                         <label>Date</label>
                                         <input type="text" name="date" id="date"
-                                            class="form-control datepicker form-control-sm" placeholder="YYYY-MM-DD"
+                                            class="form-control datepicker form-control-sm" value="{{ $current_date }}" placeholder="YYYY-MM-DD"
                                             readonly>
                                     </div>
 
@@ -109,7 +109,7 @@
 
                             <div class="card-body">
 
-                                <form method="POST" action="{{ route('purchases.store') }}">
+                                <form method="POST" action="{{ route('invoice.store') }}">
                                     @csrf
 
                                     <table class="table-sm table-bordered">
@@ -136,7 +136,7 @@
                                                 <td colspan="4" class="text-right">Discount</td>
                                                 <td>
                                                     <input type="text" name="discount_amount" id="discount_amount"
-                                                        class="form-control form-control-sm discount_amount"
+                                                        class="form-control form-control-sm discount_amount text-right"
                                                         placeholder="Enter Discount Amount">
                                                 </td>
                                             </tr>
@@ -202,7 +202,7 @@
                                         </div>
 
                                         <div class="form-group col-md-4">
-                                            <input type="text" name="moblie" id="moblie" class="form-control form-control-sm"
+                                            <input type="text" name="mobile_no" id="mobile_no" class="form-control form-control-sm"
                                                 placeholder="Write customer mobile number">
                                         </div>
 
@@ -268,7 +268,7 @@
         $(document).ready(function() {
             $(document).on("click", ".addeventmore", function() {
                 var date = $('#date').val();
-                var purchase_no = $('#purchase_no').val();
+                var invoice_no = $('#invoice_no').val();
                 var supplier_id = $('#supplier_id').val();
                 var supplier_name = $('#supplier_id').find('option:selected').text();
                 var category_id = $('#category_id').val();
