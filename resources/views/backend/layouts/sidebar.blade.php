@@ -215,6 +215,15 @@
                 </li>
                 
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('daily.invoice.report') }}" class="nav-link {{ ($route=='daily.invoice.report')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Daily Invoice Report</p>
+                    </a>
+                </li>
+                
+            </ul>
         </li>
 
     </ul>

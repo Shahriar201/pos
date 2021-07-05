@@ -152,6 +152,6 @@
         }
       });
     });
-    </script>
+  </script>
 
 @endsection
