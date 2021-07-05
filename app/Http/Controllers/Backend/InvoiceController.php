@@ -16,6 +16,7 @@ use App\Model\InvoiceDetail;
 use App\Model\Payment;
 use App\Model\PaymentDetail;
 use App\Model\Customer;
+use PDF;
 
 class InvoiceController extends Controller
 {
@@ -156,5 +157,19 @@ class InvoiceController extends Controller
             $invoice->save();
         });
         return redirect()->route('invoice.pending.list')->with('success', 'Invoice Successfully Approved');
+    }
+
+    public function printInvoiceList(){
+        $allData = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '1')->get();
+        return view('backend.invoice.print-invoice-list', compact('allData'));
+    }
+
+    public function printInvoice($id)
+    {
+        $data['invoice'] = Invoice::with(['invoice_details'])->find($id);
+          
+        $pdf = PDF::loadView('backend.pdf.invoice-pdf', $data);
+    
+        return $pdf->stream('invoice.pdf');
     }
 }

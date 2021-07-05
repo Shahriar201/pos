@@ -206,6 +206,15 @@
                 </li>
                 
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('invoice.print.list') }}" class="nav-link {{ ($route=='invoice.print.list')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Print Invoice</p>
+                    </a>
+                </li>
+                
+            </ul>
         </li>
 
     </ul>
