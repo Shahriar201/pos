@@ -131,13 +131,30 @@ class InvoiceController extends Controller
     }
 
     public function approve($id){
-        $purchase = Purchase::find($id);
-        $product = Product::where('id',$purchase->product_id)->first();
-        $purchase_qty = ((float)($purchase->buying_qty))+((float)($product->quantity));
-        $product->quantity = $purchase_qty;
-        if ($product->save()) {
-            DB::table('purchases')->where('id',$id)->update(['status' => 1]);
+        $invoice = Invoice::with(['invoice_details'])->find($id);
+        return view('backend.invoice.invoice-approve', compact('invoice'));
+    }
+    
+    public function approvalStore(Request $request, $id){
+        foreach ($request->selling_qty as $key => $value) {
+            $invoice_details = InvoiceDetail::where('id', $key)->first();
+            $product = Product::where('id', $invoice_details->product_id)->first();
+            if ($product->quantity < $request->selling_qty[$key]) {
+                return redirect()->back()->with('error', 'Sorry! you have no more current stock');
+            }
         }
-        return redirect()->route('purchases.pending.list')->with('success', 'Order Approved Successfully');
+        $invoice = Invoice::find($id);
+        $invoice->approved_by = Auth::user()->id;
+        $invoice->status = '1';
+        DB::transaction(function () use ($request, $invoice, $id){
+            foreach ($request->selling_qty as $key => $value) {
+                $invoice_details = InvoiceDetail::where('id', $key)->first();
+                $product = Product::where('id', $invoice_details->product_id)->first();
+                $product->quantity = ((float)$product->quantity) - ((float)$request->selling_qty[$key]);
+                $product->save();
+            }
+            $invoice->save();
+        });
+        return redirect()->route('invoice.pending.list')->with('success', 'Invoice Successfully Approved');
     }
 }
