@@ -103,6 +103,9 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/delete', 'Backend\PurchaseController@delete')->name('purchases.delete');    
         Route::get('/purchase/pending/list', 'Backend\PurchaseController@pendingList')->name('purchases.pending.list');    
         Route::get('/purchases/approve/{id}', 'Backend\PurchaseController@approve')->name('purchases.approve');    
+
+        Route::get('/report', 'Backend\PurchaseController@purchaseReport')->name('purchase.report');
+        Route::get('/report/pdf', 'Backend\PurchaseController@purchaseReportPdf')->name('purchase.report.pdf');
     });
 
     // Get Category By Ajax
