@@ -134,6 +134,9 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/report', 'Backend\StockController@stockReport')->name('stock.report');
         Route::get('/report/download/pdf', 'Backend\StockController@stockReportPdf')->name('stock.report.pdf');
                 
+        Route::get('/report/supplier/product/wise', 'Backend\StockController@SupplierProductWise')->name('stock.report.supplier.product.wise');
+        Route::get('/report/supplier/product/wise/pdf', 'Backend\StockController@SupplierProductWisePdf')->name('stock.report.supplier.product.wise.pdf');
+                
     });
  
 });

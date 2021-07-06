@@ -79,6 +79,10 @@
                         
                     </tbody>
                 </table>
+                @php
+                    $date = new DateTime('now', new DateTimezone('Asia/Dhaka'));
+                @endphp
+                <i>Printing Time: {{ $date->format('F j, Y, g:i a') }}</i>
             </div>
 
         </div>
