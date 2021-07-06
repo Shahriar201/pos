@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Supplier Wise Stock Report PDF</title>
+    <title>Product Wise Stock Report PDF</title>
 </head>
 
 <body>
@@ -33,13 +33,12 @@
         <div class="row">
             <div class="col-md-12">
                 <hr style="margin-bottom: 0px;">
-                <strong>Supplier Name: </strong>{{ $allData['0']['supplier']['name'] }}
                 <table>
                     <tbody>
                         <tr>
                             <td width="60%"></td>
                             <td>
-                                <u><strong><span style="font-size: 15px; background:burlywood">Supplier Wise Stock Report</span></strong></u>
+                                <u><strong><span style="font-size: 15px; background:burlywood">Product Wise Stock Report</span></strong></u>
                             </td>
                             <td width="20%"></td>
                         </tr>
@@ -55,8 +54,9 @@
                 <table border="1" width="100%">
                     <thead>
                         <tr style="text-align: center">
-                            <th>SL.</th>
+                            {{-- <th>SL.</th> --}}
                             {{-- <th>Supplier Name</th> --}}
+                            <th>Supplier Name</th>
                             <th>Category</th>
                             <th>Product Name</th>
                             <th>Stock</th>
@@ -65,18 +65,16 @@
                     </thead>
 
                     <tbody>
-                        @foreach ($allData as $key => $product)
 
                         <tr style="text-align: center">
-                            <td>{{ $key+1 }}</td>
+                            {{-- <td>{{ $key+1 }}</td> --}}
                             {{-- <td>{{ $product['supplier']['name'] }}</td> --}}
+                            <td>{{ $product['supplier']['name'] }}</td>
                             <td>{{ $product['category']['name'] }}</td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->quantity }}</td>
                             <td>{{ $product['unit']['name'] }}</td>
                         </tr>
-                            
-                        @endforeach
                         
                     </tbody>
                 </table>

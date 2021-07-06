@@ -62,18 +62,45 @@
             </div>
             <!-- /.row (main row) -->
             <div class="show_supplier" style="display: none">
-                <form action="{{ route('stock.report.supplier.product.wise.pdf') }}" method="GET" id="supplierWiseForm">
+                <form action="{{ route('stock.report.supplier.wise.pdf') }}" method="GET" id="supplierWiseForm" target="_blank">
                     <div class="form-row">
                         <div class="col-sm-8">
                             <label for="">Supplier Name</label>
                             <select name="supplier_id" id="supplier_id" class="form-control select2">
-                                <option value="">Select Supplier</option>
+                                <option value="">Select Supplier Name</option>
                                 @foreach ($suppliers as $supplier)
                                     <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-sm-4" style="padding-top:28px">
+                            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="show_product" style="display: none">
+                <form action="{{ route('stock.report.product.wise.pdf') }}" method="GET" id="productWiseForm" target="_blank">
+                    <div class="form-row">
+                        <div class="col-sm-4">
+                            <label>Category Name</label>
+                            <select name="category_id" id="category_id" class="form-control select2">
+                                <option value="">Select Category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">
+                                        {{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label>Product Name</label>
+                            <select name="product_id" id="product_id" class="form-control select2">
+                                <option value="">Select Product</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2" style="padding-top:28px">
                             <button type="submit" class="btn btn-primary btn-sm">Search</button>
                         </div>
                     </div>
@@ -95,6 +122,11 @@
            $('.show_supplier').show();
        }else{
            $('.show_supplier').hide();
+       }
+       if (search_value == 'product_wise') {
+           $('.show_product').show();
+       }else{
+        $('.show_product').hide();
        }
     });
 </script>
@@ -124,6 +156,64 @@
                 
                 //terms: "Please accept our terms"
             },
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+
+        $('#productWiseForm').validate({
+            ignore:[],
+            errorPlacement:function (error,element) {
+                if (element.attr("name") == "category_id") {
+                    error.insertAfter(element.next());
+                }
+                else if (element.attr("name") == "product_id") {
+                    error.insertAfter(element.next());
+                }
+                else{
+                    error.insertAfter(element);
+                }
+            },
+            errorClass: 'text-danger',
+            validClass: 'text-success',
+            rules: {
+                category_id: {
+                    required: true,
+                },
+                product_id: {
+                    required: true,
+                },
+            },
+            messages: {
+                
+                //terms: "Please accept our terms"
+            },
+        });
+    });
+</script>
+
+{{-- Get Product Name using Category_id Select by Ajax --}}
+<script type="text/javascript">
+    $(function() {
+        $(document).on('change', '#category_id', function() {
+            var category_id = $(this).val();
+            $.ajax({
+                url: "{{ route('get-product') }}",
+                type: "GeT",
+                data: {
+                    category_id: category_id
+                },
+                success: function(data) {
+                    var html = '<option value="">Select Product</option>';
+                    $.each(data, function(key, v) {
+                        html += '<option value="' + v.id + '">' + v.name +
+                            '</option>';
+                    });
+                    $('#product_id').html(html);
+                }
+            });
         });
     });
 </script>
