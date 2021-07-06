@@ -128,5 +128,12 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/daily/report/pdf', 'Backend\InvoiceController@dailyReportPdf')->name('daily.invoice.report.pdf');
         
     });
+    
+    Route::prefix('stock')->group(function(){
+    
+        Route::get('/report', 'Backend\StockController@stockReport')->name('stock.report');
+        Route::get('/report/download/pdf', 'Backend\StockController@stockReportPdf')->name('stock.report.pdf');
+                
+    });
  
 });
