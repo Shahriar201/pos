@@ -92,6 +92,15 @@
                 </li>
                 
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('customer.credit') }}" class="nav-link {{ ($route=='customer.credit')?'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Credit Customers</p>
+                    </a>
+                </li>
+                
+            </ul>
         </li>
         
         <li class="nav-item has-treeview {{ ($prefix=='/units')?'menu-open':'' }}">
