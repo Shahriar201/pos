@@ -77,7 +77,7 @@
         
         <li class="nav-item has-treeview {{ ($prefix=='/customers')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fa fa-male"></i>
+                <i class="nav-icon fa fa-female"></i>
                 <p>
                     Manage Customers
                     <i class="fas fa-angle-left right"></i>
@@ -94,7 +94,7 @@
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('customer.credit') }}" class="nav-link {{ ($route=='customer.credit')?'active':'' }}">
+                    <a href="{{ route('customers.credit') }}" class="nav-link {{ ($route=='customers.credit')?'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Credit Customers</p>
                     </a>
@@ -124,7 +124,7 @@
         
         <li class="nav-item has-treeview {{ ($prefix=='/categories')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fa fa-tasks"></i>
+                <i class="nav-icon fa fa-home"></i>
                 <p>
                     Manage Category
                     <i class="fas fa-angle-left right"></i>
@@ -163,7 +163,7 @@
 
         <li class="nav-item has-treeview {{ ($prefix=='/purchases')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fa fa-tasks"></i>
+                <i class="nav-icon fa fa-envelope"></i>
                 <p>
                     Manage Purchase
                     <i class="fas fa-angle-left right"></i>
@@ -200,7 +200,7 @@
         
         <li class="nav-item has-treeview {{ ($prefix=='/invoice')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fa fa-tasks"></i>
+                <i class="nav-icon fa fa-book"></i>
                 <p>
                     Manage Invoice
                     <i class="fas fa-angle-left right"></i>
@@ -246,7 +246,7 @@
         
         <li class="nav-item has-treeview {{ ($prefix=='/stock')?'menu-open':'' }}">
             <a href="" class="nav-link">
-                <i class="nav-icon fa fa-tasks"></i>
+                <i class="nav-icon fa fa-history"></i>
                 <p>
                     Manage Stock
                     <i class="fas fa-angle-left right"></i>

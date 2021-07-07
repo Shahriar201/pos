@@ -103,7 +103,13 @@ class CustomerController extends Controller
             $payment_details->updated_by = Auth::user()->id;
             $payment_details->save();
 
-            return redirect()->route('customer.credit')->with('success', 'Invoice Successfully Updated');
+            return redirect()->route('customers.credit')->with('success', 'Invoice Successfully Updated');
         }
+    }
+    
+    public function invoiceDetailsPdf($invoice_id){
+        $data['payment'] = Payment::where('invoice_id', $invoice_id)->first();
+        $pdf = PDF::loadView('backend.pdf.customer-invoice-details-pdf', $data);
+        return $pdf->stream('customer.invoice.details.pdf');
     }
 }

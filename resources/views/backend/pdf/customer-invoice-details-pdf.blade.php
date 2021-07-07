@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Invoice PDF</title>
+    <title>Customer Invoice Details PDF</title>
 </head>
 
 <body>
@@ -15,12 +15,12 @@
             <div class="col-md-12">
                 <table width="100%">
                     <tr>
-                        <td><strong>Invoice No: #</strong>{{ $invoice->invoice_no }}</td>
+                        <td><strong>Invoice No: #</strong>{{ $payment['invoice']['invoice_no'] }}</td>
                         <td>
                             <span style="font-size: 20px; background: #ddd">Shikder Electronics
                             </span>
                             <br>
-                                Pachilokki Bazar, Kalampur, Chandhara
+                            Pachilokki Bazar, Kalampur, Chandhara
                         </td>
                         <td>
                             <span>Showroom: 01899776555</span>
@@ -29,6 +29,7 @@
                 </table>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <hr style="margin-bottom: 0px;">
@@ -37,7 +38,7 @@
                         <tr>
                             <td width="45%"></td>
                             <td>
-                                <u><strong><span style="font-size: 15px;">Customer Invoice</span></strong></u>
+                                <u><strong><span style="font-size: 15px;">Customer Invoice Details</span></strong></u>
                             </td>
                             <td width="30%"></td>
                         </tr>
@@ -47,14 +48,14 @@
             </div>
 
         </div>
+
         <div class="row">
             <div class="col-md-12">
-                @php
-                    $payment = App\Model\Payment::where('invoice_id', $invoice->id)->first();
-                @endphp
-
                 <table width="100%">
                     <tbody>
+                        <tr>
+                            <td colspan="3"><strong><u>Customer Info</u></strong></td>
+                        </tr>
                         <tr>
                             <td width="30%"><strong>Name: </strong>{{ $payment['customer']['name'] }}</td>
                             <td width="30%"><strong>Mobile: </strong>{{ $payment['customer']['mobile_no'] }}</td>
@@ -66,6 +67,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+                
                 <table border="1" width="100%" style="margin-bottom: 10px">
                     <thead>
                         <tr class="text-center">
@@ -80,8 +82,10 @@
                     <tbody>
                         @php
                             $total_sum = 0;
+                            $invoice_details = App\Model\InvoiceDetail::where('invoice_id', $payment->invoice_id)->get();
                         @endphp
-                        @foreach ($invoice['invoice_details'] as $key => $details)
+
+                        @foreach ($invoice_details as $key => $details)
                             <tr class="text-center">
                                 
                                 <td>{{ $key+1 }}</td>
@@ -110,6 +114,7 @@
                         </tr>
                         <tr>
                             <td colspan="5" class="text-right">Due Amount</td>
+                            <input type="hidden" name="new_paid_amount" value="{{ $payment->due_amount }}">
                             <td class="text-center"><strong>{{ $payment->due_amount }} TK</strong></td>
                         </tr>
                         <tr>
@@ -132,13 +137,16 @@
                         @endphp
 
                         @foreach ($payment_details as $dtl)
-                        <tr>
-                            <td colspan="3" style="text-align: right">{{ date('d-m-Y', strtotime($dtl->date)) }}</td>
+                        <tr style="text-align: right">
+                            <td colspan="3">{{ date('d-m-Y', strtotime($dtl->date)) }}</td>
                             <td colspan="3">{{ $dtl->current_paid_amount }} TK</td>
                         </tr>
                         @endforeach
+                        
+                        
                     </tbody>
                 </table>
+
                 @php
                     $date = new DateTime('now', new DateTimezone('Asia/Dhaka'));
                 @endphp
@@ -146,6 +154,7 @@
             </div>
 
         </div>
+        
         <div class="row">
             <div class="col-md-12">
                 <hr style="margin-bottom: 0px;">

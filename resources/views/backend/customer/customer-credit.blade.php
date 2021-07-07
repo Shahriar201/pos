@@ -39,7 +39,7 @@
                             <div class="card-header">
                                 <h3>Credit Customer List
                                     <a class="btn btn-success float-right btn-sm"
-                                        href="{{ route('customer.credit.pdf') }}" target="_blank">
+                                        href="{{ route('customers.credit.pdf') }}" target="_blank">
                                         <i class="fa fa-download"></i>Download PDF</a>
 
                                 </h3>
@@ -78,12 +78,11 @@
                                                 <td>{{ $payment->due_amount }} TK</td>
 
                                                 <td>
-                                                    <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('customer.edit.invoice', $payment->invoice_id) }}">
+                                                    <a title="Edit" id="edit" class="btn btn-sm btn-primary" href="{{ route('customers.edit.invoice', $payment->invoice_id) }}">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
 
-                                                    <a title="Details" class="btn btn-sm btn-success" href=""
-                                                        data-token="{{ csrf_token() }}" data-id="{{ $payment->id }}">
+                                                    <a title="Details" class="btn btn-sm btn-success" href="{{ route('invoice.details.pdf', $payment->invoice_id) }}" target="_blank">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
                                                 </td>

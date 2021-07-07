@@ -64,7 +64,7 @@
                                     <tr class="{{ $customer->id }}">
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $customer->name }}</td>
-                                        <td>{{ $customer->mobile }}</td>
+                                        <td>{{ $customer->mobile_no }}</td>
                                         <td>{{ $customer->email }}</td>
                                         <td>{{ $customer->address }}</td>
 

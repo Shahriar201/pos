@@ -38,7 +38,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Edit Invoice (Invoice No #{{ $payment['invoice']['invoice_no'] }})
-                                <a class="btn btn-success float-right btn-sm" href="{{ route('customer.credit') }}">
+                                <a class="btn btn-success float-right btn-sm" href="{{ route('customers.credit') }}">
                                     <i class="fa fa-list"></i>Credit Customer List</a>
                                 
                             </h3>
@@ -58,7 +58,7 @@
                                 </tbody>
                             </table>
                             
-                            <form action="{{ route('customer.update.invoice', $payment->invoice_id) }}" method="POST" id="myForm">
+                            <form action="{{ route('customers.update.invoice', $payment->invoice_id) }}" method="POST" id="myForm">
                                 @csrf
 
                                 <table border="1" width="100%" style="margin-bottom: 10px">
