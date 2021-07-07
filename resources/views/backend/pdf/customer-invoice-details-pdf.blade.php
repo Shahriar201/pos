@@ -36,7 +36,7 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td width="45%"></td>
+                            <td width="60%"></td>
                             <td>
                                 <u><strong><span style="font-size: 15px;">Customer Invoice Details</span></strong></u>
                             </td>
@@ -137,8 +137,8 @@
                         @endphp
 
                         @foreach ($payment_details as $dtl)
-                        <tr style="text-align: right">
-                            <td colspan="3">{{ date('d-m-Y', strtotime($dtl->date)) }}</td>
+                        <tr>
+                            <td colspan="3" style="text-align: right">{{ date('d-m-Y', strtotime($dtl->date)) }}</td>
                             <td colspan="3">{{ $dtl->current_paid_amount }} TK</td>
                         </tr>
                         @endforeach

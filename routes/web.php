@@ -61,13 +61,16 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/edit/{id}', 'Backend\CustomerController@edit')->name('customers.edit');
         Route::post('/update/{id}', 'Backend\CustomerController@update')->name('customers.update');
         Route::post('/delete', 'Backend\CustomerController@delete')->name('customers.delete');
-
+        //Credit Customers
         Route::get('/credit', 'Backend\CustomerController@creditCustomer')->name('customers.credit');
         Route::get('/credit/pdf', 'Backend\CustomerController@creditCustomerPdf')->name('customers.credit.pdf');
         Route::get('/invoice/edit/{invoice_id}', 'Backend\CustomerController@editInvoice')->name('customers.edit.invoice');
         Route::post('/invoice/update/{invoice_id}', 'Backend\CustomerController@updateInvoice')->name('customers.update.invoice');
         Route::get('/invoice/details/pdf/{invoice_id}', 'Backend\CustomerController@invoiceDetailsPdf')->name('invoice.details.pdf');
         
+        //Paid Customers
+        Route::get('/paid', 'Backend\CustomerController@paidCustomer')->name('customers.paid');
+        Route::get('/paid/pdf', 'Backend\CustomerController@paidCustomerPdf')->name('customers.paid.pdf');
     });
     
     Route::prefix('units')->group(function(){

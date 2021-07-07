@@ -112,4 +112,17 @@ class CustomerController extends Controller
         $pdf = PDF::loadView('backend.pdf.customer-invoice-details-pdf', $data);
         return $pdf->stream('customer.invoice.details.pdf');
     }
+
+    public function paidCustomer(){
+        $allData = Payment::where('paid_status', '!=', 'full_due')->get();
+    
+        return view('backend.customer.customer-paid', compact('allData'));
+    }
+    
+    public function paidCustomerPdf(){
+        $data['allData'] = Payment::where('paid_status', '!=', 'full_due')->get();
+        $pdf = PDF::loadView('backend.pdf.paid-customer-pdf', $data);
+    
+        return $pdf->stream('paid-customer-pdf');
+    }
 }
