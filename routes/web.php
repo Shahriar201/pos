@@ -71,6 +71,11 @@ Route::group(['middleware'=>'auth'], function(){
         //Paid Customers
         Route::get('/paid', 'Backend\CustomerController@paidCustomer')->name('customers.paid');
         Route::get('/paid/pdf', 'Backend\CustomerController@paidCustomerPdf')->name('customers.paid.pdf');
+
+        //Customer wise report
+        Route::get('/wise/report', 'Backend\CustomerController@customerWiseReport')->name('customers.wise.report');
+        Route::get('/wise/credit/report', 'Backend\CustomerController@customerWiseCredit')->name('customers.wise.credit.report');
+        Route::get('/wise/paid/report', 'Backend\CustomerController@customerPaidCredit')->name('customers.wise.paid.report');
     });
     
     Route::prefix('units')->group(function(){
