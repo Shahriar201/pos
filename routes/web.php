@@ -28,8 +28,7 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/store', 'Backend\UserController@store')->name('users.store');  
         Route::get('/edit/{id}', 'Backend\UserController@edit')->name('users.edit');
         Route::post('/update/{id}', 'Backend\UserController@update')->name('users.update');
-        Route::get('/delete/{id}', 'Backend\UserController@delete')->name('users.delete');
-        
+        Route::post('/delete', 'Backend\UserController@delete')->name('users.delete');      
     });
     
     Route::prefix('profiles')->group(function(){

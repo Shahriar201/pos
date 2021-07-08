@@ -65,7 +65,7 @@
                                 
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label></label>
-                                    <input type="text" name="mobile" value="{{ @$editData->mobile }}" id="name" class="form-control">
+                                    <input type="text" name="mobile_no" value="{{ @$editData->mobile_no }}" id="name" class="form-control">
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -115,10 +115,10 @@
           mobile: {
             required: true,
           },
-          email: {
-            required: true,
-            email: true,
-          },
+          // email: {
+          //   required: true,
+          //   email: true,
+          // },
           address: {
             required: true,
           },
@@ -130,10 +130,10 @@
           mobile: {
             required: "Please select a mobile number"
           },
-          email: {
-            required: "Please enter a email address",
-            email: "Please enter a <em>vaild</em> email address"
-          },
+          // email: {
+          //   required: "Please enter a email address",
+          //   email: "Please enter a <em>vaild</em> email address"
+          // },
           address: {
             required: "Please enter your address",
           },

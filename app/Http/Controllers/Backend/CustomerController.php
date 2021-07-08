@@ -24,7 +24,7 @@ class CustomerController extends Controller
     public function store(Request $request){
         $customer = new Customer();
         $customer->name = $request->name;
-        $customer->mobile = $request->mobile;
+        $customer->mobile_no = $request->mobile_no;
         $customer->email = $request->email;
         $customer->email = $request->email;
         $customer->address = $request->address;
@@ -43,7 +43,7 @@ class CustomerController extends Controller
     public function update(Request $request, $id){
         $customer = Customer::find($id);
         $customer->name = $request->name;
-        $customer->mobile = $request->mobile;
+        $customer->mobile_no = $request->mobile_no;
         $customer->email = $request->email;
         $customer->address = $request->address;
         $customer->updated_by = Auth::user()->id;
